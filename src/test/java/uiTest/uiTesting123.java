@@ -7,5 +7,10 @@ public class uiTesting123 {
 	public void uiTesting(){
 		System.out.println("Successfully completeed");
 	}
+	@Test
+	public void uiTest(){
+		System.out.println("Successfully completeed");
+	}
+	
 
 }
