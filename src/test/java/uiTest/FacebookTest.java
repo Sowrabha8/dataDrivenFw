@@ -8,4 +8,9 @@ public class FacebookTest {
 	public void loginTest() {
 		throw new SkipException("Skipped");
 	}
+
+	@Test
+	public void createPost() {
+		throw new SkipException("Skipped");
+	}
 }
