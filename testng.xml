@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke" parallel="false">
+  <!-- listeners>
+  	<listener class-name="listeners.TestNGListeners"/>
+  </listeners -->
+  <test name="SmokeTest">
+    <classes>
+      <!-- class name="uiTest.TestExtentReport"/-->
+      <!-- class name="uiTest.UITest"/-->
+      <class name="uiTest.JenkinsTest"/>
+    </classes>
+  </test> <!-- SmokeTest -->
+</suite> <!-- Smoke -->
