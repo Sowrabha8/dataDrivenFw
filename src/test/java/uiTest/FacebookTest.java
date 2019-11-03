@@ -13,4 +13,9 @@ public class FacebookTest {
 	public void createPost() {
 		throw new SkipException("Skipped");
 	}
+
+	@Test
+	public void deletePost() {
+		throw new SkipException("Skipped");
+	}
 }
