@@ -19,4 +19,8 @@ public class uiTesting123 {
 		throw new SkipException("Skipped");
 	}
 
+	@Test
+	public void logoutTest() {
+		throw new SkipException("Skipped");
+	}
 }
