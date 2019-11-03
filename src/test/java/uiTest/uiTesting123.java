@@ -11,6 +11,10 @@ public class uiTesting123 {
 	public void uiTest(){
 		System.out.println("Successfully completeed");
 	}
+	@Test
+	public void uiTestcreation(){
+		System.out.println("Successfully completeed");
+	}
 	
 
 }
