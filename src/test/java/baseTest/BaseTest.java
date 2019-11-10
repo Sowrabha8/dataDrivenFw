@@ -74,7 +74,7 @@ public class BaseTest {
 
 			driver = new ChromeDriver();
 		}
-		else if (propReader.readPropertiesFile("browser").equalsIgnoreCase("Firefox")) {
+		else if (browser.equalsIgnoreCase("Firefox")) {
 			if (System.getProperty("os.name").contains("Windows")) {
 				System.setProperty("webdriver.gecko.driver", execFolder+"geckodriver.exe");
 			}
@@ -87,15 +87,15 @@ public class BaseTest {
 			
 			driver = new FirefoxDriver();
 		}
-		else if (propReader.readPropertiesFile("browser").equalsIgnoreCase("internetexplorer")) {
+		else if (browser.equalsIgnoreCase("internetexplorer")) {
 			System.setProperty("webdriver.ie.driver", execFolder+"IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 		}
-		else if (propReader.readPropertiesFile("browser").equalsIgnoreCase("edge")) {
+		else if (browser.equalsIgnoreCase("edge")) {
 			System.setProperty("webdriver.edge.driver", execFolder+"msedgedriver.exe");
 			driver = new EdgeDriver();
 		}
-		else if (propReader.readPropertiesFile("browser").equalsIgnoreCase("Safari")) {
+		else if (browser.equalsIgnoreCase("Safari")) {
 			driver = new SafariDriver();
 		}
 		driver.manage().window().maximize();
