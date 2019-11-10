@@ -60,7 +60,8 @@ public class BaseTest {
 	public void setUp() throws Exception {
 		String execFolder = System.getProperty("user.dir")+"/src/test/resources/executables/";
 		propReader = new PropertiesFileReader();
-		if (propReader.readPropertiesFile("browser").equalsIgnoreCase("Chrome")) {
+		String browser = System.getenv("BROWSER_NAME");
+		if (browser.equalsIgnoreCase("Chrome")) {
 			if (System.getProperty("os.name").contains("Windows")) {
 				System.setProperty("webdriver.chrome.driver", execFolder+"chromedriver.exe");
 			}
