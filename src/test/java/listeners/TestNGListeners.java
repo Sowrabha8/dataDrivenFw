@@ -31,7 +31,7 @@ public class TestNGListeners extends BaseTest implements ITestListener{
 		
 	}
 
-	public void onTestFailure(ITestResult result) {
+	/*public void onTestFailure(ITestResult result) {
 		String locationOfScreenshot = System.getProperty("user.dir")+"/src/test/resources/screenshots/"+result.getName()+".png";
 		try {
 			FileUtils.copyFile(captureScreenshot(), new File(locationOfScreenshot));
@@ -46,7 +46,7 @@ public class TestNGListeners extends BaseTest implements ITestListener{
 		}
 		extentReports.flush();
 		
-	}
+	}*/
 
 	public void onTestSkipped(ITestResult result) {
 		extentTest.log(Status.SKIP, result.getName()+" is skipped");

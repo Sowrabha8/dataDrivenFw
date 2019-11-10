@@ -16,7 +16,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -25,6 +27,7 @@ import org.testng.annotations.Listeners;
 import com.aventstack.extentreports.ExtentReporter;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
@@ -43,6 +46,7 @@ public class BaseTest {
 
 	@BeforeSuite
 	public void initializeExtentReport() {
+		System.out.println(System.getenv("PATH"));
 		String pathToExtentReport = System.getProperty("user.dir")+"/src/test/resources/extentReports/extentReport.html";
 		extentReports = new ExtentReports();
 		ExtentHtmlReporter extentHtmlReporter = new ExtentHtmlReporter(pathToExtentReport);
@@ -106,5 +110,25 @@ public class BaseTest {
 	public File captureScreenshot() {
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		return screenshot;
+	}
+
+	@AfterMethod
+	public void onTestFailure(ITestResult testResult) {
+		if (testResult.getStatus() == 3) {
+			String locationOfScreenshot = System.getProperty("user.dir")+"/src/test/resources/screenshots/"+testResult.getName()+".png";
+			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			try {
+				FileUtils.copyFile(screenshot, new File(locationOfScreenshot));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			extentTest.log(Status.FAIL, testResult.getName()+" failed due to "+testResult.getThrowable());
+			try {
+				extentTest.log(Status.FAIL, extentTest.addScreenCaptureFromPath(locationOfScreenshot).toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			extentReports.flush();
+		}
 	}
 }
