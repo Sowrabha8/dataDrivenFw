@@ -40,7 +40,7 @@ public class BaseTest {
 	public static PropertiesFileReader propReader;
 	public static ExtentReports extentReports;
 	public static ExtentTest extentTest;
-	
+
 	@BeforeSuite
 	public void initializeExtentReport() {
 		String pathToExtentReport = System.getProperty("user.dir")+"/src/test/resources/extentReports/extentReport.html";
@@ -100,7 +100,7 @@ public class BaseTest {
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		driver.close();
 	}
 
 	public File captureScreenshot() {
